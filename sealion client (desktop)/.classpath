@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
+	<classpathentry kind="lib" path="C:/Users/현준/프로젝트/libgdx-0.9.9/gdx.jar" sourcepath="C:/Users/현준/프로젝트/libgdx-0.9.9/sources/gdx-sources.jar">
+		<attributes>
+			<attribute name="source_encoding" value="UTF-8"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/현준/프로젝트/libgdx-0.9.9/gdx-backend-gwt.jar"/>
+	<classpathentry kind="lib" path="C:/Users/현준/프로젝트/libgdx-0.9.9/gdx-backend-lwjgl.jar"/>
+	<classpathentry kind="lib" path="C:/Users/현준/프로젝트/libgdx-0.9.9/gdx-backend-lwjgl-natives.jar"/>
+	<classpathentry kind="lib" path="C:/Users/현준/프로젝트/libgdx-0.9.9/gdx-natives.jar"/>
+	<classpathentry kind="lib" path="C:/Users/현준/프로젝트/libgdx-0.9.9/gdx-openal.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

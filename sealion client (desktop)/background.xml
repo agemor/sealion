@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TextureAtlas imagePath="graphics/background.png">
+	<SubTexture name="REGISTER" x="5" y="5" width="800" height="481" pivotX="0" pivotY="0"/>
+	<SubTexture name="LOGIN" x="5" y="491" width="800" height="480" pivotX="0" pivotY="0"/>
+</TextureAtlas>
