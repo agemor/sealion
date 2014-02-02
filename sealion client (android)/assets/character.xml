@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TextureAtlas imagePath="graphics/character.png">
+	<SubTexture name="BODY" x="0" y="76" width="361" height="38"/>
+	<SubTexture name="FACE" x="0" y="38" width="361" height="38"/>
+	<SubTexture name="HAND" x="0" y="114" width="361" height="31"/>
+	<SubTexture name="HEAD" x="0" y="0" width="361" height="38"/>
+	<SubTexture name="LEG_STAND" x="0" y="145" width="361" height="31"/>
+	<SubTexture name="LEG_STEP1" x="0" y="176" width="361" height="31"/>
+	<SubTexture name="LEG_STEP2" x="0" y="207" width="361" height="31"/>
+	<SubTexture name="LEG_STEP3" x="0" y="238" width="361" height="31"/>
+	<SubTexture name="LEG_STEP4" x="0" y="269" width="361" height="31"/>
+</TextureAtlas>

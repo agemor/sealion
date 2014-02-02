@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TextureAtlas imagePath="graphics/game.png">
+	<SubTexture name="TERRAIN" x="0" y="113" width="800" height="51" />
+	<SubTexture name="TREE" x="0" y="0" width="480" height="113" />
+</TextureAtlas>

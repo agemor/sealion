@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TextureAtlas imagePath="graphics/ui.png">
+	<SubTexture name="ALERT_BACKGROUND" x="5" y="412" width="501" height="65" pivotX="0" pivotY="0"/>
+	<SubTexture name="CANCEL_BUTTON_DOWN" x="5" y="529" width="182" height="113" pivotX="1" pivotY="1"/>
+	<SubTexture name="CANCEL_BUTTON_UP" x="770" y="212" width="184" height="113" pivotX="1" pivotY="1"/>
+	<SubTexture name="CHAT_BOX" x="612" y="5" width="302" height="202" pivotX="1" pivotY="1"/>
+	<SubTexture name="CHAT_INPUT" x="5" y="482" width="602" height="42" pivotX="1" pivotY="1"/>
+	<SubTexture name="LOADING" x="378" y="529" width="118" height="117" pivotX="0" pivotY="0"/>
+	<SubTexture name="LOGIN_BUTTON_DOWN" x="192" y="529" width="181" height="113" pivotX="1" pivotY="1"/>
+	<SubTexture name="LOGIN_BUTTON_UP" x="770" y="330" width="183" height="113" pivotX="1" pivotY="0.5"/>
+	<SubTexture name="MENU_ITEM_BUTTON_DOWN" x="5" y="702" width="122" height="62" pivotX="1" pivotY="1"/>
+	<SubTexture name="MENU_ITEM_BUTTON_UP" x="612" y="369" width="122" height="62" pivotX="1" pivotY="1"/>
+	<SubTexture name="MENU_MATRIAL_BUTTON_DOWN" x="264" y="651" width="122" height="62" pivotX="1" pivotY="1"/>
+	<SubTexture name="MENU_MATRIAL_BUTTON_UP" x="882" y="566" width="122" height="62" pivotX="1" pivotY="1"/>
+	<SubTexture name="MENU_MENU_BUTTON_DOWN" x="132" y="702" width="122" height="62" pivotX="1" pivotY="1"/>
+	<SubTexture name="MENU_MENU_BUTTON_UP" x="501" y="566" width="122" height="62" pivotX="1" pivotY="1"/>
+	<SubTexture name="MENU_MY_INFO_BUTTON_DOWN" x="501" y="633" width="122" height="62" pivotX="1" pivotY="1"/>
+	<SubTexture name="MENU_MY_INFO_BUTTON_UP" x="628" y="566" width="122" height="62" pivotX="1" pivotY="1"/>
+	<SubTexture name="MENU_PANNEL" x="5" y="5" width="602" height="402" pivotX="1" pivotY="1"/>
+	<SubTexture name="MENU_UNIT_BUTTON_DOWN" x="628" y="633" width="122" height="62" pivotX="1" pivotY="1"/>
+	<SubTexture name="MENU_UNIT_BUTTON_UP" x="755" y="566" width="122" height="62" pivotX="1" pivotY="1"/>
+	<SubTexture name="MY_PAGE_EQUIPMENT_SLOT" x="919" y="103" width="72" height="73" pivotX="1" pivotY="1"/>
+	<SubTexture name="MY_PAGE_UNIT_SLOT" x="919" y="5" width="92" height="93" pivotX="1" pivotY="1"/>
+	<SubTexture name="OPEN_CHAT_BUTTON_DOWN" x="755" y="633" width="102" height="62" pivotX="1" pivotY="1"/>
+	<SubTexture name="OPEN_CHAT_BUTTON_UP" x="391" y="651" width="102" height="62" pivotX="1" pivotY="1"/>
+	<SubTexture name="OPEN_MENU_BUTTON_DOWN" x="862" y="633" width="102" height="62" pivotX="1" pivotY="1"/>
+	<SubTexture name="OPEN_MENU_BUTTON_UP" x="498" y="700" width="102" height="62" pivotX="1" pivotY="1"/>
+	<SubTexture name="REGISTER_BUTTON_DOWN" x="800" y="448" width="182" height="113" pivotX="1" pivotY="1"/>
+	<SubTexture name="REGISTER_BUTTON_UP" x="612" y="448" width="183" height="113" pivotX="1" pivotY="1"/>
+	<SubTexture name="TALK_BALLOON" x="259" y="718" width="170" height="24" pivotX="0" pivotY="0"/>
+	<SubTexture name="TALK_BALLOON_KNOB" x="739" y="369" width="15" height="31" pivotX="0" pivotY="0"/>
+	<SubTexture name="TEXTFIELD_BACKGROUND" x="5" y="647" width="254" height="50" pivotX="1.5" pivotY="1.5"/>
+	<SubTexture name="TEXT_FIELD_POINTER" x="759" y="369" width="4" height="40" pivotX="0" pivotY="0"/>
+	<SubTexture name="TOUCHPAD_BACKGROUND" x="612" y="212" width="153" height="152" pivotX="1" pivotY="1"/>
+	<SubTexture name="TOUCHPAD_KNOB" x="511" y="412" width="61" height="60" pivotX="0" pivotY="0"/>
+</TextureAtlas>
