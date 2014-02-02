@@ -4,8 +4,6 @@ import sealion.client.Display;
 import sealion.client.asset.Fonts;
 import sealion.client.asset.Graphics;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
@@ -33,7 +31,9 @@ public class CommonUI {
 	public static boolean frozen = false;
 	public static boolean alert = false;
 	public static boolean notice = false;
+	public static boolean areYouSureToExit = false;
 
+	private static float elapsedTime = 0;
 	private static String message;
 
 	public static void initialize() {
@@ -58,6 +58,14 @@ public class CommonUI {
 
 		text = Fonts.get(Fonts.Font.CLEAR_GOTHIC);
 		text.setColor(Color.WHITE);
+	}
+
+	public static void areYouSureToExit() {
+		notice = false;
+		alert = false;
+		areYouSureToExit = true;
+
+		CommonUI.message = "한 번 더 누르면 종료합니다.";
 	}
 
 	/**
@@ -102,12 +110,12 @@ public class CommonUI {
 		return frozen || notice || alert;
 	}
 
-	public static void draw() {
+	public static void closeAll() {
+		notice = false;
+		alert = false;
+	}
 
-		if (Gdx.input.isKeyPressed(Keys.BACK) || Gdx.input.isKeyPressed(Keys.F5)) {
-			notice = false;
-			alert = false;
-		}
+	public static void draw(float delta) {
 
 		spriteBatch.begin();
 
@@ -129,8 +137,21 @@ public class CommonUI {
 			alertDialog.draw(spriteBatch);
 			text.setColor(Color.WHITE);
 			text.draw(spriteBatch, message, noticeDialog.getX(), noticeDialog.getY() + 50);
+
+		} else if (areYouSureToExit) {
+			alertDialog.draw(spriteBatch);
+			text.setColor(Color.WHITE);
+			text.draw(spriteBatch, message, noticeDialog.getX(), noticeDialog.getY() + 50);
 		}
 
 		spriteBatch.end();
+
+		if (areYouSureToExit) {
+			if (elapsedTime > 2) {
+				areYouSureToExit = false;
+				elapsedTime = 0;
+			} else
+				elapsedTime += delta;
+		}
 	}
 }

@@ -6,13 +6,11 @@ import sealion.client.asset.Graphics;
 import sealion.client.net.Connection;
 import sealion.client.net.SignupEvent;
 import sealion.client.ui.CommonUI;
+import sealion.client.ui.InputManager;
 import sealion.client.ui.Style;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input.Keys;
-import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.InputMultiplexer;
-import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -42,11 +40,6 @@ public class SignUpPage extends ChangeListener implements Page, SignupEvent {
 	public Button signup_button;
 	public Button cancel_button;
 	public Camera camera;
-
-	/**
-	 * 이벤트 처리
-	 */
-	private InputProcessor backProcessor;
 
 	public SignUpPage() {
 
@@ -83,10 +76,10 @@ public class SignUpPage extends ChangeListener implements Page, SignupEvent {
 		password_input_textfield.setPosition(320, 480 - 46 - 105);
 		email_input_textfield.setPosition(320, 480 - 46 - 170);
 		character_input_textfield.setPosition(320, 480 - 46 - 234);
-		
+
 		signup_button.setPosition(590, 480 - 110 - 170);
 		cancel_button.setPosition(590, 480 - 110 - 350);
-		
+
 		stage.addActor(background);
 		stage.addActor(id_input_textfield);
 		stage.addActor(password_input_textfield);
@@ -98,19 +91,17 @@ public class SignUpPage extends ChangeListener implements Page, SignupEvent {
 		cancel_button.addListener(this);
 		signup_button.addListener(this);
 
-		// 뒤로 가기 키가 눌렸을 때
-		backProcessor = new InputAdapter() {
-			@Override
-			public boolean keyDown(int keycode) {
+	}
 
-				if ((keycode == Keys.F5) || (keycode == Keys.BACK))
+	@Override
+	public void backKeyPressed() {
 
-					// 뒤로가기 버튼이 눌린 것과 같은 효과
-					changed(null, cancel_button);
+		if (CommonUI.isBusy()) {
+			CommonUI.closeAll();
+			return;
+		}
 
-				return false;
-			}
-		};
+		changed(null, cancel_button);
 	}
 
 	/**
@@ -177,7 +168,8 @@ public class SignUpPage extends ChangeListener implements Page, SignupEvent {
 	@Override
 	public void show() {
 
-		Gdx.input.setInputProcessor(new InputMultiplexer(stage, backProcessor));
+		Gdx.input.setInputProcessor(new InputMultiplexer(stage, InputManager.self));
+		InputManager.targetPage = this;
 
 		// 이벤트 리스너 추가
 		Connection.addEventListener(this);
@@ -194,7 +186,7 @@ public class SignUpPage extends ChangeListener implements Page, SignupEvent {
 
 		stage.draw();
 
-		CommonUI.draw();
+		CommonUI.draw(delta);
 	}
 
 	@Override

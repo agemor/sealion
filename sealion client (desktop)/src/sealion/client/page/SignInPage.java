@@ -7,13 +7,11 @@ import sealion.client.net.Connection;
 import sealion.client.net.Packet;
 import sealion.client.net.SigninEvent;
 import sealion.client.ui.CommonUI;
+import sealion.client.ui.InputManager;
 import sealion.client.ui.Style;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.InputMultiplexer;
-import com.badlogic.gdx.InputProcessor;
-import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -41,12 +39,6 @@ public class SignInPage extends ChangeListener implements Page, SigninEvent {
 	public Button signin_button;
 	public Button signup_button;
 	public Camera camera;
-
-	/**
-	 * Back Key 처리 관련
-	 */
-	private InputProcessor backProcessor;
-	private int backKeyPressedCount = 0;
 
 	public SignInPage() {
 
@@ -100,31 +92,22 @@ public class SignInPage extends ChangeListener implements Page, SigninEvent {
 
 		signin_button.addListener(this);
 		signup_button.addListener(this);
+	}
 
-		// 뒤로 가기 키가 눌렸을 때
-		backProcessor = new InputAdapter() {
-			@Override
-			public boolean keyDown(int keycode) {
+	@Override
+	public void backKeyPressed() {
 
-				if ((keycode == Keys.F5) || (keycode == Keys.BACK)) {
+		if (CommonUI.isBusy() && !CommonUI.areYouSureToExit) {
+			CommonUI.closeAll();
+			return;
+		}
 
-					System.out.println("aaaaaaaaaaa");
+		if (CommonUI.areYouSureToExit)
+			Gdx.app.exit();
 
-					if (CommonUI.isBusy())
-						return true;
-
-					if (backKeyPressedCount > 0)
-						Gdx.app.exit();
-
-					// 한번 더 누르면 종료합니다.
-					CommonUI.notice("한 번 더 누르면 종료합니다.");
-					backKeyPressedCount++;
-
-				}
-
-				return false;
-			}
-		};
+		// 한번 더 누르면 종료합니다.
+		else
+			CommonUI.areYouSureToExit();
 	}
 
 	@Override
@@ -181,11 +164,9 @@ public class SignInPage extends ChangeListener implements Page, SigninEvent {
 
 	@Override
 	public void show() {
-		Gdx.input.setInputProcessor(new InputMultiplexer(stage, backProcessor));
-		backKeyPressedCount = 0;
+		Gdx.input.setInputProcessor(new InputMultiplexer(stage, InputManager.self));
+		InputManager.targetPage = this;
 	}
-
-	private float elapsedTime = 0;
 
 	@Override
 	public void render(float delta) {
@@ -199,13 +180,7 @@ public class SignInPage extends ChangeListener implements Page, SigninEvent {
 
 		stage.draw();
 
-		if (backKeyPressedCount > 0) {
-			if (elapsedTime > 3)
-				backKeyPressedCount = 0;
-			elapsedTime += delta;
-		}
-
-		CommonUI.draw();
+		CommonUI.draw(delta);
 	}
 
 	@Override

@@ -11,15 +11,13 @@ import sealion.client.net.UserEvent;
 import sealion.client.page.gadget.ChatBox;
 import sealion.client.page.gadget.Menu;
 import sealion.client.ui.CommonUI;
+import sealion.client.ui.InputManager;
 import sealion.client.ui.Style;
 import sealion.client.world.Character;
 import sealion.client.world.unit.Tree;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.InputMultiplexer;
-import com.badlogic.gdx.InputProcessor;
-import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
@@ -61,12 +59,6 @@ public class GamePage extends ChangeListener implements Page, UserEvent {
 	public ChatBox chat_box;
 
 	/**
-	 * Back Key 처리 관련
-	 */
-	private InputProcessor backProcessor;
-	private int backKeyPressedCount = 0;
-
-	/**
 	 * Touchpad 관련
 	 */
 	private int previousDirection = -1;
@@ -82,6 +74,22 @@ public class GamePage extends ChangeListener implements Page, UserEvent {
 
 		initializeUI();
 		initializeWorld();
+	}
+
+	@Override
+	public void backKeyPressed() {
+
+		if (CommonUI.isBusy() && !CommonUI.areYouSureToExit) {
+			CommonUI.closeAll();
+			return;
+		}
+
+		if (CommonUI.areYouSureToExit)
+			Gdx.app.exit();
+
+		// 한번 더 누르면 종료합니다.
+		else
+			CommonUI.areYouSureToExit();
 	}
 
 	/**
@@ -117,25 +125,6 @@ public class GamePage extends ChangeListener implements Page, UserEvent {
 		menu.close();
 		chat_box.close();
 
-		// 뒤로 가기 키가 눌렸을 때
-		backProcessor = new InputAdapter() {
-			@Override
-			public boolean keyDown(int keycode) {
-
-				if ((keycode == Keys.F5) || (keycode == Keys.BACK)) {
-
-					if (backKeyPressedCount > 0)
-						Gdx.app.exit();
-
-					// 한번 더 누르면 종료합니다.
-					CommonUI.notice("한 번 더 누르면 종료합니다.");
-					backKeyPressedCount++;
-
-				}
-
-				return false;
-			}
-		};
 	}
 
 	/**
@@ -198,11 +187,14 @@ public class GamePage extends ChangeListener implements Page, UserEvent {
 
 	@Override
 	public void show() {
-		Gdx.input.setInputProcessor(new InputMultiplexer(backProcessor, stage));
+		Gdx.input.setInputProcessor(new InputMultiplexer(stage, InputManager.self));
+		InputManager.targetPage = this;
 
 		// 유저 이벤트 받기
 		Connection.addEventListener(this);
 	}
+
+	private float elapsedTime = 0;
 
 	@Override
 	public void render(float delta) {
@@ -223,6 +215,8 @@ public class GamePage extends ChangeListener implements Page, UserEvent {
 
 		// UI를 그린다.
 		stage.draw();
+
+		CommonUI.draw(delta);
 
 	}
 

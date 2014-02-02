@@ -7,6 +7,7 @@ import sealion.client.page.GamePage;
 import sealion.client.page.SignInPage;
 import sealion.client.page.SignUpPage;
 import sealion.client.ui.CommonUI;
+import sealion.client.ui.InputManager;
 import sealion.client.ui.Style;
 
 import com.badlogic.gdx.Game;
@@ -42,9 +43,11 @@ public class Main extends Game {
 		// 공통 UI 초기화
 		CommonUI.initialize();
 
+		InputManager.self = new InputManager();
+
 		// 서버와 연결을 시도한다.
 		Connection.initialize();
-		Connection.connect("localhost", 17343);
+		Connection.connect("182.216.161.175", 17343);
 
 		gamePage = new GamePage();
 		signInPage = new SignInPage();

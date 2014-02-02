@@ -97,7 +97,7 @@ public class ChatBox extends WidgetGroup implements Gadget {
 
 		chatbox_background.setPosition(0, Display.height * Display.scale - 200);
 		inputbox_background
-				.setPosition((Display.width * Display.scale - 600) / 2, Display.height * Display.scale - 240);
+				.setPosition((Display.width * Display.scale - 600) / 2, Display.height * Display.scale - 140);
 
 		chatbox_label.setPosition(chatbox_background.getX() + 20, chatbox_background.getY());
 		inputbox_textfield.setPosition(inputbox_background.getX() + 10, inputbox_background.getY() + 3);
