@@ -196,7 +196,9 @@ public class SignUpPage extends ChangeListener implements Page, SignupEvent {
 		camera.viewportHeight = (float) Math.ceil(Display.scale * height);
 
 		camera.position.set(Display.width / 2, Display.height / 2, 0);
-		stage.setViewport(camera.viewportWidth, camera.viewportHeight, false);
+		stage.getViewport().setScreenWidth((int) camera.viewportWidth);
+		stage.getViewport().setScreenHeight((int) camera.viewportHeight);
+		//stage.setViewport(camera.viewportWidth, camera.viewportHeight, false);
 	}
 
 	@Override

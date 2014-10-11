@@ -223,10 +223,12 @@ public class GamePage extends ChangeListener implements Page, UserEvent {
 	@Override
 	public void resize(int width, int height) {
 		world.camera.viewportWidth = (float) Math.ceil(Display.scale * width);
-		world.camera.viewportHeight = (float) Math.ceil(Display.scale * height);
-
+		world.camera.viewportHeight = (float) Math.ceil(Display.scale * height);		
 		world.camera.position.set(Display.width / 2, Display.width / 2, 0);
-		stage.setViewport(world.camera.viewportWidth, world.camera.viewportHeight, false);
+		stage.getViewport().setScreenWidth((int) world.camera.viewportWidth);
+		stage.getViewport().setScreenHeight((int) world.camera.viewportHeight);
+		
+		//stage.setViewport(world.camera.viewportWidth, world.camera.viewportHeight, false);
 
 	}
 

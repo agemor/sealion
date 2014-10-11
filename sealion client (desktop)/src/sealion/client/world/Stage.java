@@ -172,7 +172,7 @@ public class Stage implements Renderable {
 		}*/
 	}
 
-	public class UnitComparator implements Comparator<Unit> {
+	public class UnitComparator implements Comparator<Unit> {		
 		@Override
 		public int compare(Unit r1, Unit r2) {
 			return (int) (r1.getPosition().y - r2.getPosition().y);

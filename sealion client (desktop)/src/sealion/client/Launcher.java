@@ -17,7 +17,7 @@ public class Launcher {
 		Main main = new Main();
 		Main.self = main;
 
-		new LwjglApplication(Main.self, "Lionse", resolution.height, resolution.width, true);
+		new LwjglApplication(Main.self, "Lionse", resolution.height, resolution.width);
 	}
 
 	/**

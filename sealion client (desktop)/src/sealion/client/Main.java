@@ -47,7 +47,7 @@ public class Main extends Game {
 
 		// 서버와 연결을 시도한다.
 		Connection.initialize();
-		Connection.connect("182.216.161.175", 17343);
+		Connection.connect("127.0.0.1", 17343);
 
 		gamePage = new GamePage();
 		signInPage = new SignInPage();

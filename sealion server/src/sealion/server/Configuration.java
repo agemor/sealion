@@ -43,7 +43,7 @@ public class Configuration {
 	 */
 	public String dbHost = "jdbc:mysql://localhost:3306/lionse";
 	public String dbUser = "root";
-	public String dbPassword = "root";
+	public String dbPassword = "asd123";
 
 	/**
 	 * 설정 생성
@@ -88,7 +88,7 @@ public class Configuration {
 
 			config.dbHost = property.getProperty("db-host", "jdbc:mysql://localhost:3306/lionse");
 			config.dbUser = property.getProperty("db-user", "root");
-			config.dbPassword = property.getProperty("db-password", "root");
+			config.dbPassword = property.getProperty("db-password", "asd123");
 
 			return config;
 

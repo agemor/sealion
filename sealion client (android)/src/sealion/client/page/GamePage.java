@@ -255,7 +255,8 @@ public class GamePage extends ChangeListener implements Page, UserEvent, DialogE
 		world.camera.viewportHeight = (float) Math.ceil(Display.scale * height);
 
 		world.camera.position.set(Display.width / 2, Display.width / 2, 0);
-		stage.setViewport(world.camera.viewportWidth, world.camera.viewportHeight, false);
+		stage.getViewport().setScreenWidth((int) world.camera.viewportWidth);
+		stage.getViewport().setScreenHeight((int) world.camera.viewportHeight);
 
 	}
 

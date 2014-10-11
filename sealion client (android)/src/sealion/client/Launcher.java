@@ -15,8 +15,7 @@ public class Launcher extends AndroidApplication {
 
 		ActionResolver.initialize(this);
 
-		AndroidApplicationConfiguration config = new AndroidApplicationConfiguration();
-		config.useGL20 = true;
+		AndroidApplicationConfiguration config = new AndroidApplicationConfiguration();		
 		config.useWakelock = true;
 
 		Main main = new Main();
